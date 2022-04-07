@@ -1,17 +1,26 @@
 <?php
-namespace Moebius\HttpClient;
+namespace Moebius\Socket;
 
 /**
- * Base exception class for Moebius\HttpClient
+ * Base exception class for moebius/socket
  */
-class ClientException extends \Exception {
-}
+class SocketException extends \Exception {}
+
+/**
+ * Base exception class for Moebius\Socket\Client
+ */
+class ClientException extends SocketException {}
+
+/**
+ * Base exception class for Moebius\Socket\Server
+ */
+class ServerException extends SocketException {}
 
 /**
  * Exception class for errors related to incorrect
  * usage of the client
  */
-class LogicError extends ClientException {}
+class LogicError extends SocketException {}
 
 /**
  * Exception when trying to perform some operation

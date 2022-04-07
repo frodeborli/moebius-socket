@@ -15,12 +15,12 @@ function make_connection(string $address) {
 $time = microtime(true);
 
 echo <<<EOT
-    Making 900 connections to localhost port 80, then for each
+    Making 1900 connections to localhost port 80, then for each
     connection WE WAIT 1 SECOND before we send the request
     EOT;
 
 $results = [];
-for ($i = 0; $i < 900; $i++) {
+for ($i = 0; $i < 1900; $i++) {
     $results[] = go(make_connection(...), 'tcp://127.0.0.1:80');
 }
 

@@ -33,7 +33,7 @@ while (!$client->eof()) {
 
 echo "> EOF reached\n";
 
-$client->disconnect();
+$client->close();
 
 echo "> Disconnected\n";
 

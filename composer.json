@@ -14,7 +14,8 @@
     "autoload": {
         "psr-4": {
             "Moebius\\Socket\\": "src/"
-        }
+        },
+        "classmap": ["exceptions.php"]
     },
     "authors": [
         {
