@@ -1,0 +1,26 @@
+{
+    "name": "moebius/socket",
+    "description": "An asynchronous socket implementation, for performing multiple requests concurrently.",
+    "type": "library",
+    "require": {
+        "moebius/coroutine": "dev-master",
+        "charm/options": "dev-master",
+        "charm/event": "dev-master"
+    },
+    "require-dev": {
+        "charm/testing": "dev-master"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Moebius\\Socket\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Frode Børli",
+            "email": "frode@ennerd.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
