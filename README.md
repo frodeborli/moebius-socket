@@ -1,7 +1,13 @@
 moebius/socket
 ==============
 
-An easy to use interface for performing many simultaneous socket connections.
+An easy to use interface for working with many simultaneous and non-blocking 
+network connections. The library efficiently handles up to 1023 concurrent
+connections with a default PHP 8.1 installation.
+
+Note: This library technically works via PHP streams, not the lower level sockets
+functionality of PHP.
+
 
 Complete working example
 ------------------------
