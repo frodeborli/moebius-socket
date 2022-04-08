@@ -21,9 +21,6 @@ $startTime = microtime(true);
 $client = new Client('tcp://127.0.0.1:80');
 echo "> Client constructed\n";
 
-$client->connect();
-echo "> Client connected\n";
-
 $client->write("GET / HTTP/1.0\r\n\r\n");
 echo "> Request sent\n";
 

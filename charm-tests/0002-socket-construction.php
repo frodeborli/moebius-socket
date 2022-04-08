@@ -8,11 +8,6 @@ use function M\{go, await};
 $clientA = new Client('tcp://www.dagbladet.no:443');
 $clientB = new Client('tcp://www.vg.no:443');
 
-// connecting is non-blocking
-
-$clientA->connect();
-$clientB->connect();
-
 // writing to the sockets is non-blocking
 
 $clientA->write("GET / HTTP/1.0\r\n\r\n");

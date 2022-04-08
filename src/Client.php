@@ -13,14 +13,17 @@ class Client extends AbstractConnection {
     use EventEmitterTrait;
 
     public readonly string $address;
-    public readonly ClientOptions $options;
 
     /**
      * @param string $address An address to the socket to connect to, such as "tcp://127.0.0.1:80"
      */
     public function __construct(string $address, ClientOptions|array $options=[]) {
         $this->address = $address;
-        parent::__construct($options);
+        parent::__construct(ClientOptions::create($options));
+
+        if ($this->options->connect) {
+            $this->connect();
+        }
     }
 
     /**

@@ -6,6 +6,11 @@ use Charm\AbstractOptions;
 class ServerOptions extends AbstractOptions {
 
     /**
+     * Should the server automatically connect to the socket?
+     */
+    public bool $connect = true;
+
+    /**
      * A bitmask field which may be set to any combination of socket creation flags.
      * {@see https://www.php.net/manual/en/function.stream-socket-server.php}
      */

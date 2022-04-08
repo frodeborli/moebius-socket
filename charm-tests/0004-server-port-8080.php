@@ -5,7 +5,6 @@ use Moebius\Socket\{Server, Connection};
 use function M\{go, await, sleep};
 
 $server = new Server('tcp://127.0.0.1:8080');
-$server->open();
 while (null !== ($connection = $server->accept())) {
     go(handle_connection(...), $connection);
 }
@@ -15,10 +14,11 @@ function handle_connection(Connection $connection) {
 
     $requestLine = $connection->readLine();
     $headers = handle_connection_headers($connection);
-
+    sleep(1);
     $connection->write(
         "HTTP/1.1 200 OK\r\n".
         "Content-Type: text/plain\r\n".
+        "Connection: close\r\n".
         "\r\n".
         "Hello World\r\n"
     );

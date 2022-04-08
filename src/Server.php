@@ -32,6 +32,9 @@ class Server implements EventEmitterInterface {
                 'so_broadcast' => $this->options->socket_so_broadcast,
             ],
         ]);
+        if ($this->options->connect) {
+            $this->open();
+        }
     }
 
     /**

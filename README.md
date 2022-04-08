@@ -2,12 +2,99 @@ moebius/socket
 ==============
 
 An easy to use interface for working with many simultaneous and non-blocking 
-network connections. The library efficiently handles up to 1023 concurrent
-connections with a default PHP 8.1 installation.
+network connections. The library efficiently handles up to 1024 concurrent
+connections with a default PHP 8.1 installation per server instance.
+
+If you need more than 1024 connections, you can run multiple instances of the
+server or use a more advanced event loop implementation.
 
 Note: This library technically works via PHP streams, not the lower level sockets
 functionality of PHP.
 
+
+Architecture
+------------
+
+This library provides three core classes which you can use to create network
+clients or server implementations.
+
+ * `Moebius\Socket\Client` provides an API to the `stream_socket_client()` function
+   in PHP, and can be used to create concurrent HTTP clients.
+
+ * `Moebius\Socket\Server` provides an API to the `stream_socket_server()` function,
+   and lets you create servers that accepts connections and gives you connection
+   instances for every new client that connects.
+
+ * `Moebius\Socket\Connection` is similar to the Client class, but are created by
+   a server.
+
+Example client
+--------------
+
+```php
+use Moebius\Socket\Client;
+
+/**
+ * *** COROUTINE 1 ***
+ */
+$google = go(function() {
+    $client = new Client('tcp://www.google.com:80');
+    $client->write("GET / HTTP/1.0\r\n\r\n");
+    while (!$client->eof()) {
+        echo "< ".$client->readLine()."\n";
+    }
+});
+/**
+ * *** COROUTINE 2 ***
+ */
+$bing = go(function() {
+    $client = new Client('tcp://www.bing.com:80');
+    $client->write("GET / HTTP/1.0\r\n\r\n");
+    while (!$client->eof()) {
+        echo "< ".$client->readLine()."\n";
+    }
+});
+
+
+/**
+ * *** AWAIT BOTH COROUTINES ***
+ */
+await($google);
+await($bing);
+```
+
+Example server
+--------------
+
+```php
+use Moebius\Socket\Server;
+
+$server = new Server('tcp://0.0.0.0:8080');
+while ($connection = $server->accept()) {
+
+    /**
+     * *** LAUNCH A COROUTINE PER CONNECTION ***
+     */
+    go(function() use ($connection) {
+
+        $requestLine = $connection->readLine();
+
+        do {
+            $header = $connection->readLine();
+        } while ($header !== '');
+
+        $connection->write(<<<RESPONSE
+            HTTP/1.0 200 OK\r
+            Content-Type: text/plain\r
+            \r
+            Hello World!
+            RESPONSE);
+
+        $connection->close();
+            
+    });
+}
+```
 
 Complete working example
 ------------------------

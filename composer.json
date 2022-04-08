@@ -1,6 +1,6 @@
 {
     "name": "moebius/socket",
-    "description": "An asynchronous socket implementation, for performing multiple requests concurrently.",
+    "description": "A coroutine based socket client and server implementation.",
     "type": "library",
     "require": {
         "moebius/coroutine": "dev-master",
