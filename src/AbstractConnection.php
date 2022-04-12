@@ -16,8 +16,8 @@ abstract class AbstractConnection implements EventEmitterInterface {
     protected mixed $_context = null;
     protected mixed $_socket = null;
 
-    public function __construct(array|ConnectionOptions $options=[]) {
-        $this->options = ConnectionOptions::create($options);
+    public function __construct(ConnectionOptions $options) {
+        $this->options = $options;
     }
 
 
