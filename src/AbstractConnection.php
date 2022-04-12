@@ -56,6 +56,7 @@ abstract class AbstractConnection implements EventEmitterInterface {
         if (!fclose($this->_socket)) {
             throw new IOException("fclose() call failed");
         }
+        $this->_socket = null;
     }
 
     public function isConnected(): bool {
