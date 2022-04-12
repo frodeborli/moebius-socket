@@ -42,18 +42,22 @@ class Server implements EventEmitterInterface {
      */
     public function accept(): ?Connection {
         $this->assertOpen();
-        if (!is_resource($this->_socket)) {
+        if ($this->_socket && !is_resource($this->_socket)) {
+            $this->_socket = null;
             return null;
         }
         $peerName = null;
-        do {
+        while (is_resource($this->_socket)) {
             readable($this->_socket);
-            $socket = stream_socket_accept($this->_socket, 0, $peerName);
-            if ($socket) {
-                return new Connection($socket, $peerName);
-            }
-        } while (is_resource($this->_socket));
 
+            // socket may have been closed by a call to $this->close() or an error
+            if (is_resource($this->_socket)) {
+                $socket = stream_socket_accept($this->_socket, 0, $peerName);
+                if ($socket) {
+                    return new Connection($socket, $peerName);
+                }
+            }
+        }
         return null;
     }
 
@@ -87,7 +91,6 @@ class Server implements EventEmitterInterface {
         if (!$this->isOpen()) {
             throw new NotConnectedError($this->address.' is already closed');
         }
-
         fclose($this->_socket);
     }
 

@@ -4,11 +4,11 @@
     "type": "library",
     "require": {
         "moebius/coroutine": "dev-master",
-        "charm/options": "dev-master",
-        "charm/event": "dev-master"
+        "charm/options": ">=1.0.6",
+        "charm/event": ">=1.0.0"
     },
     "require-dev": {
-        "charm/testing": "dev-master"
+        "charm/testing": ">=0.0.8"
     },
     "license": "MIT",
     "autoload": {

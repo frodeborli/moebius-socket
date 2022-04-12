@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0d245429aebfdc127ba753db10b4cddd",
+    "content-hash": "52e49c7795f2f7808bb12060b07e87dc",
     "packages": [
         {
             "name": "charm/error",
@@ -49,12 +49,12 @@
             "source": {
                 "type": "git",
                 "url": "https://bitbucket.org/ennerd/charm-event.git",
-                "reference": "49ccbf887506bab1483480131149c536c029c9c1"
+                "reference": "89f76564e777ab7d73d7ce5e4fe8a760db02c370"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://bitbucket.org/ennerd/charm-event/get/49ccbf887506bab1483480131149c536c029c9c1.zip",
-                "reference": "49ccbf887506bab1483480131149c536c029c9c1",
+                "url": "https://bitbucket.org/ennerd/charm-event/get/89f76564e777ab7d73d7ce5e4fe8a760db02c370.zip",
+                "reference": "89f76564e777ab7d73d7ce5e4fe8a760db02c370",
                 "shasum": ""
             },
             "require": {
@@ -80,9 +80,9 @@
             "description": "A simple event emitter interface and a trait with the methods 'on', 'off' and 'emit'.",
             "homepage": "https://bitbucket.org/ennerd/charm-event",
             "support": {
-                "source": "https://bitbucket.org/ennerd/charm-event/src/49ccbf887506bab1483480131149c536c029c9c1/?at=1.0.0"
+                "source": "https://bitbucket.org/ennerd/charm-event/src/89f76564e777ab7d73d7ce5e4fe8a760db02c370/?at=1.0.1"
             },
-            "time": "2021-09-14T14:25:25+00:00"
+            "time": "2022-04-08T20:43:09+00:00"
         },
         {
             "name": "charm/options",
@@ -131,12 +131,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/frodeborli/moebius-coroutine.git",
-                "reference": "e66385a448bfe69df43ab16800bdcb9ef3092038"
+                "reference": "762692e3c3759005969a6c6ddecfcdc7f3a02bf5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/frodeborli/moebius-coroutine/zipball/e66385a448bfe69df43ab16800bdcb9ef3092038",
-                "reference": "e66385a448bfe69df43ab16800bdcb9ef3092038",
+                "url": "https://api.github.com/repos/frodeborli/moebius-coroutine/zipball/762692e3c3759005969a6c6ddecfcdc7f3a02bf5",
+                "reference": "762692e3c3759005969a6c6ddecfcdc7f3a02bf5",
                 "shasum": ""
             },
             "require": {
@@ -176,9 +176,9 @@
             "description": "Easy to use coroutines for PHP.",
             "support": {
                 "issues": "https://github.com/frodeborli/moebius-coroutine/issues",
-                "source": "https://github.com/frodeborli/moebius-coroutine/tree/master"
+                "source": "https://github.com/frodeborli/moebius-coroutine/tree/0.0.9-beta"
             },
-            "time": "2022-04-06T23:21:13+00:00"
+            "time": "2022-04-08T07:41:24+00:00"
         },
         {
             "name": "moebius/loop",
@@ -279,21 +279,23 @@
     "packages-dev": [
         {
             "name": "charm/terminal",
-            "version": "1.0.3",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://bitbucket.org/ennerd/terminal.git",
-                "reference": "b82264b7bb0d1250730ef70849d1eaa20ed87065"
+                "reference": "af5cc7df87365e954987e1b0b4f9c3478f64897f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://bitbucket.org/ennerd/terminal/get/b82264b7bb0d1250730ef70849d1eaa20ed87065.zip",
-                "reference": "b82264b7bb0d1250730ef70849d1eaa20ed87065",
+                "url": "https://bitbucket.org/ennerd/terminal/get/af5cc7df87365e954987e1b0b4f9c3478f64897f.zip",
+                "reference": "af5cc7df87365e954987e1b0b4f9c3478f64897f",
                 "shasum": ""
             },
             "require": {
-                "charm/util-phpencode": "^1.0"
+                "charm/options": ">=1.0.6",
+                "charm/util-phpencode": ">=1.0.2"
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "files": [
@@ -319,9 +321,9 @@
             "description": "Organized and colorful command line output through a simple markup language.",
             "homepage": "https://bitbucket.org/ennerd/terminal",
             "support": {
-                "source": "https://bitbucket.org/ennerd/terminal/src/b82264b7bb0d1250730ef70849d1eaa20ed87065/?at=1.0.2"
+                "source": "https://bitbucket.org/ennerd/terminal/src/af5cc7df87365e954987e1b0b4f9c3478f64897f/?at=master"
             },
-            "time": "2022-01-06T14:18:07+00:00"
+            "time": "2022-04-08T20:40:39+00:00"
         },
         {
             "name": "charm/testing",
@@ -329,16 +331,16 @@
             "source": {
                 "type": "git",
                 "url": "https://bitbucket.org/ennerd/charm-testing.git",
-                "reference": "f434b69218f2a9d5d528abac93021cfe3f92882f"
+                "reference": "389cdbb3a0a997459605a24204a59423b5f006ee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://bitbucket.org/ennerd/charm-testing/get/f434b69218f2a9d5d528abac93021cfe3f92882f.zip",
-                "reference": "f434b69218f2a9d5d528abac93021cfe3f92882f",
+                "url": "https://bitbucket.org/ennerd/charm-testing/get/389cdbb3a0a997459605a24204a59423b5f006ee.zip",
+                "reference": "389cdbb3a0a997459605a24204a59423b5f006ee",
                 "shasum": ""
             },
             "require": {
-                "charm/terminal": "^1.0",
+                "charm/terminal": ">=1.0.6",
                 "charm/util-phpencode": "^1.0"
             },
             "default-branch": true,
@@ -364,9 +366,9 @@
             "description": "A tool for running regression and unit testing with very little scaffolding.",
             "homepage": "https://bitbucket.org/ennerd/charm-testing",
             "support": {
-                "source": "https://bitbucket.org/ennerd/charm-testing/src/f434b69218f2a9d5d528abac93021cfe3f92882f/?at=0.0.7"
+                "source": "https://bitbucket.org/ennerd/charm-testing/src/389cdbb3a0a997459605a24204a59423b5f006ee/?at=0.0.9"
             },
-            "time": "2022-04-04T21:36:27+00:00"
+            "time": "2022-04-08T20:41:52+00:00"
         },
         {
             "name": "charm/util-phpencode",
@@ -409,10 +411,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "moebius/coroutine": 20,
-        "charm/options": 20,
-        "charm/event": 20,
-        "charm/testing": 20
+        "moebius/coroutine": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
