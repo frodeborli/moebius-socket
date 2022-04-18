@@ -4,9 +4,11 @@ require(__DIR__.'/../vendor/autoload.php');
 use Moebius\Socket\Client;
 use function M\{go, await, sleep};
 
+$connectionCount = getenv('CONNECTIONS') ? getenv('CONNECTIONS') : 500;
+
 function make_connection(string $address) {
     $client = new Client($address);
-    sleep(1);
+    sleep(0.5);
     $client->write("GET / HTTP/1.0\r\n\r\n");
     return $client->readAll();
 }
@@ -14,23 +16,26 @@ function make_connection(string $address) {
 $time = microtime(true);
 
 echo <<<EOT
-    Making 900 connections to localhost port 80, then for each
-    connection WE WAIT 1 SECOND before we send the request
+    Making $connectionCount connections to localhost on port
+    80, then for each connection WE WAIT 0.5 SECONDS before
+    we send the request.
+
     EOT;
 
 $results = [];
-for ($i = 0; $i < 900; $i++) {
+for ($i = 0; $i < $connectionCount; $i++) {
     $results[] = go(make_connection(...), 'tcp://127.0.0.1:80');
 }
 
 echo "Checking that we have all the results:\n";
+$bytesReceived = 0;
 foreach ($results as $number => $future) {
     try {
-        await($future);
+        $bytesReceived += strlen(await($future));
     } catch (\Throwable $e) {
         echo "Request $number failed\n";
     }
 }
 
-echo "Finished in ".((microtime(true) - $time)-1)." seconds (removing the 1 second wait)\n";
+echo "Received $bytesReceived bytes in ".((microtime(true) - $time))." seconds\n";
 

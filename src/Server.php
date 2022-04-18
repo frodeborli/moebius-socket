@@ -49,8 +49,12 @@ class Server implements EventEmitterInterface {
         }
         $peerName = null;
         while (is_resource($this->_socket)) {
+
+            // limit the number of active connections being handled
             if ($this->connectionCount >= $this->options->maxConnections) {
-                Co::suspend();
+                while ($this->connectionCount >= $this->options->maxConnections) {
+                    Co::suspend();
+                }
                 continue;
             }
             Co::readable($this->_socket);

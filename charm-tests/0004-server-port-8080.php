@@ -9,25 +9,35 @@ use function M\{go, await, sleep};
 
 $server = new Server('tcp://127.0.0.1:8080');
 
-$requestCount = 100;
+$requestCount = 1000;
 
-go(function() {
-    for ($i = 0; $i < 100; $i++) {
-        go(function() use ($i) {
-            echo "Coroutine $i\n";
-            echo " - $i: Connecting\n";
-            $client = new Client('tcp://127.0.0.1:8080');
-            if (!$client->isConnected()) {
-                echo " - $i: Failed to connect\n";
-                return;
+go(function() use ($server) {
+    sleep(2);
+    $server->close();
+});
+
+go(function() use ($requestCount) {
+    for ($i = 0; $i < $requestCount; $i++) {
+        go(function() use ($i, &$requestCount) {
+            try {
+                echo "Coroutine $i\n";
+                echo " - $i: Connecting\n";
+                $client = new Client('tcp://127.0.0.1:8080');
+                if (!$client->isConnected()) {
+                    echo " - $i: Failed to connect\n";
+                    return;
+                }
+                $client->write("GET / HTTP/1.0\r\n\r\n");
+                echo " - $i: Sent request\n";
+                $response = $client->read(8192);
+                echo " - $i: response size=".strlen($response)."\n";
+                $client->close();
+            } catch (\Throwable $e) {
+                echo "FAILED REQUEST: ".$e->getMessage()."\n";
+                $requestCount--;
             }
-            $client->write("GET / HTTP/1.0\r\n\r\n");
-            echo " - $i: Sent request\n";
-            $response = $client->read(8192);
-            echo " - $i: response size=".strlen($response)."\n";
-            $client->close();
         });
-        sleep(0.01);
+        sleep(0.001);
     }
 });
 
@@ -35,25 +45,27 @@ while (null !== ($connection = $server->accept())) {
     go(handle_connection(...), $connection);
 }
 
-echo "FINAL STATEMENT IN APPLICATION\n";
-
+echo "FINAL STATEMENT\n";
 
 
 function handle_connection(Connection $connection) {
     global $server, $requestCount;
 
-    $requestLine = $connection->readLine();
-    $headers = handle_connection_headers($connection);
-    sleep(2);
-    $connection->write(
-        "HTTP/1.1 200 OK\r\n".
-        "Content-Type: text/plain\r\n".
-        "Connection: close\r\n".
-        "\r\n".
-        "Hello World\r\n"
-    );
-    $connection->close();
-
+    try {
+        $requestLine = $connection->readLine();
+        $headers = handle_connection_headers($connection);
+        sleep(0.2);
+        $connection->write(
+            "HTTP/1.1 200 OK\r\n".
+            "Content-Type: text/plain\r\n".
+            "Connection: close\r\n".
+            "\r\n".
+            "Hello World\r\n"
+        );
+        $connection->close();
+    } catch (\Throwable $e) {
+        echo "\nERROR ".$e->getMessage()."\n";
+    }
     if (--$requestCount === 0) {
         $server->close();
     }

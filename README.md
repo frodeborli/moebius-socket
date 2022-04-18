@@ -4,8 +4,9 @@ moebius/socket
 An easy to use interface for working with many simultaneous and non-blocking 
 network connections.
 
-PHP is unable to support stream_select() with more than 1024 on most installations.
-This can be changed by recompiling PHP. 
+> Note! A default build of PHP limit the number of concurrent "polling" 
+> connections to 1024. This limitation can be overcome by running multiple
+> server processes, or by recompiling PHP.
 
 
 Architecture

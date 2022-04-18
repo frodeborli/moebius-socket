@@ -37,6 +37,7 @@ class Client extends AbstractConnection {
         }
 
         $startTime = microtime(true);
+        $retries = $this->options->retries;
         do {
             if ($this->options->timeout !== null) {
                 if (microtime(true) < $startTime + $this->options->timeout) {
@@ -45,7 +46,7 @@ class Client extends AbstractConnection {
             }
             $errorCode = null;
             $errorMessage = null;
-            $socket = stream_socket_client(
+            $socket = @stream_socket_client(
                 $this->address,
                 $errorCode,
                 $errorMessage,
@@ -54,12 +55,19 @@ class Client extends AbstractConnection {
                 $this->_context
             );
             if (false === $socket) {
-                if ($errorCode === 110) {
+                if ($errorCode === 0) {
+                    // PHP may be unable to create any more connections
+                    Co::sleep(0.1);
+                } elseif ($errorCode === 110) {
                     throw new TimeoutError($errorMessage);
                 }
-                throw new ConnectionError($errorMessage, $errorCode);
             }
-        } while (!$socket);
+        } while (!$socket && --$retries > 0);
+
+        if (!$socket) {
+            throw new ConnectionError($errorMessage, $errorCode);
+        }
+
 
         $this->setSocket($socket);
     }
