@@ -2,14 +2,10 @@ moebius/socket
 ==============
 
 An easy to use interface for working with many simultaneous and non-blocking 
-network connections. The library efficiently handles up to 1024 concurrent
-connections with a default PHP 8.1 installation per server instance.
+network connections.
 
-If you need more than 1024 connections, you can run multiple instances of the
-server or use a more advanced event loop implementation.
-
-Note: This library technically works via PHP streams, not the lower level sockets
-functionality of PHP.
+PHP is unable to support stream_select() with more than 1024 on most installations.
+This can be changed by recompiling PHP. 
 
 
 Architecture
@@ -25,14 +21,16 @@ clients or server implementations.
    and lets you create servers that accepts connections and gives you connection
    instances for every new client that connects.
 
- * `Moebius\Socket\Connection` is similar to the Client class, but are created by
-   a server.
+ * `Moebius\Socket\Connection` is similar to the Client class, but connections are
+   initiated externally and returned by the Server class.
+
 
 Example client
 --------------
 
 ```php
 use Moebius\Socket\Client;
+use function M\{go, await};
 
 /**
  * *** COROUTINE 1 ***
@@ -68,6 +66,7 @@ Example server
 
 ```php
 use Moebius\Socket\Server;
+use function M\go;
 
 $server = new Server('tcp://0.0.0.0:8080');
 while ($connection = $server->accept()) {

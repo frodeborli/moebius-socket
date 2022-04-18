@@ -3,7 +3,7 @@ namespace Moebius\Socket;
 
 use Closure;
 use Charm\Event\{EventEmitterInterface, EventEmitterTrait};
-use function M\{readable, writable, go};
+use Moebius\Coroutine as Co;
 
 /**
  * A generic socket client class for working asynchronously with
@@ -61,18 +61,6 @@ class Client extends AbstractConnection {
             }
         } while (!$socket);
 
-        if ($this->options->chunkSize !== null) {
-            stream_set_chunk_size($socket, $this->options->chunkSize);
-        }
-        if ($this->options->readBufferSize !== null) {
-            stream_set_read_buffer($socket, $this->options->readBufferSize);
-        }
-        if ($this->options->writeBufferSize !== null) {
-            stream_set_write_buffer($socket, $this->options->writeBufferSize);
-        }
-
-        $this->_socket = $socket;
+        $this->setSocket($socket);
     }
-
 }
-

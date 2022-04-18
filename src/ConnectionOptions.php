@@ -20,7 +20,7 @@ class ConnectionOptions extends AbstractOptions {
      * Configure the size of the read buffer.
      * {@see https://www.php.net/manual/en/function.stream-set-read-buffer.php}
      */
-    public ?int $readBufferSize = null;
+    public ?int $readBufferSize = 0;
 
     /**
      * Configure the size of the write buffer.

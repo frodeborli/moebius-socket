@@ -3,7 +3,7 @@ namespace Moebius\Socket;
 
 use Closure;
 use Charm\Event\{EventEmitterInterface, EventEmitterTrait};
-use function M\{readable, writable, go};
+use Moebius\Coroutine as Co;
 
 /**
  * A generic socket server class for working asynchronously with
@@ -17,6 +17,7 @@ class Server implements EventEmitterInterface {
 
     private mixed $_context = null;
     private mixed $_socket = null;
+    private int $connectionCount = 0;
 
     /**
      * @param string $address An address to the socket to connect to, such as "tcp://127.0.0.1:80"
@@ -48,13 +49,22 @@ class Server implements EventEmitterInterface {
         }
         $peerName = null;
         while (is_resource($this->_socket)) {
-            readable($this->_socket);
+            if ($this->connectionCount >= $this->options->maxConnections) {
+                Co::suspend();
+                continue;
+            }
+            Co::readable($this->_socket);
 
             // socket may have been closed by a call to $this->close() or an error
             if (is_resource($this->_socket)) {
-                $socket = stream_socket_accept($this->_socket, 0, $peerName);
+                $socket = @stream_socket_accept($this->_socket, 0, $peerName);
                 if ($socket) {
-                    return new Connection($socket, $peerName);
+                    $connection = new Connection($socket, $peerName);
+                    $this->connectionCount++;
+                    $connection->on(Connection::CLOSE_EVENT, function() {
+                        $this->connectionCount--;
+                    });
+                    return $connection;
                 }
             }
         }
@@ -79,7 +89,7 @@ class Server implements EventEmitterInterface {
             $this->options->serverFlags,
             $this->_context
         );
-
+        stream_set_blocking($socket, false);
         if (false === $this->_socket) {
             throw new ConnectionError($errorMessage, $errorCode);
         }

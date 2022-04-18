@@ -6,6 +6,12 @@ use Charm\AbstractOptions;
 class ServerOptions extends AbstractOptions {
 
     /**
+     * Restrict how many concurrent connections will be allowed. When the connection
+     * limit is reached, accepting new connections will block.
+     */
+    public int $maxConnections = 500;
+
+    /**
      * Should the server automatically connect to the socket?
      */
     public bool $connect = true;

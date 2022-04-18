@@ -45,22 +45,21 @@
         },
         {
             "name": "charm/event",
-            "version": "dev-master",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://bitbucket.org/ennerd/charm-event.git",
-                "reference": "89f76564e777ab7d73d7ce5e4fe8a760db02c370"
+                "reference": "49ccbf887506bab1483480131149c536c029c9c1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://bitbucket.org/ennerd/charm-event/get/89f76564e777ab7d73d7ce5e4fe8a760db02c370.zip",
-                "reference": "89f76564e777ab7d73d7ce5e4fe8a760db02c370",
+                "url": "https://bitbucket.org/ennerd/charm-event/get/49ccbf887506bab1483480131149c536c029c9c1.zip",
+                "reference": "49ccbf887506bab1483480131149c536c029c9c1",
                 "shasum": ""
             },
             "require": {
                 "charm/error": "^1.0"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "classmap": [
@@ -80,9 +79,9 @@
             "description": "A simple event emitter interface and a trait with the methods 'on', 'off' and 'emit'.",
             "homepage": "https://bitbucket.org/ennerd/charm-event",
             "support": {
-                "source": "https://bitbucket.org/ennerd/charm-event/src/89f76564e777ab7d73d7ce5e4fe8a760db02c370/?at=1.0.1"
+                "source": "https://bitbucket.org/ennerd/charm-event/src/49ccbf887506bab1483480131149c536c029c9c1/?at=1.0.0"
             },
-            "time": "2022-04-08T20:43:09+00:00"
+            "time": "2021-09-14T14:25:25+00:00"
         },
         {
             "name": "charm/options",
@@ -90,12 +89,12 @@
             "source": {
                 "type": "git",
                 "url": "https://bitbucket.org/ennerd/charm-options.git",
-                "reference": "95dec5386148050cfd3de49a889b3b1c0e38ede1"
+                "reference": "a11bdda40fca0d8f6c711d8eb2d5eb8a42e91f3d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://bitbucket.org/ennerd/charm-options/get/95dec5386148050cfd3de49a889b3b1c0e38ede1.zip",
-                "reference": "95dec5386148050cfd3de49a889b3b1c0e38ede1",
+                "url": "https://bitbucket.org/ennerd/charm-options/get/a11bdda40fca0d8f6c711d8eb2d5eb8a42e91f3d.zip",
+                "reference": "a11bdda40fca0d8f6c711d8eb2d5eb8a42e91f3d",
                 "shasum": ""
             },
             "default-branch": true,
@@ -121,9 +120,9 @@
             "description": "A generic class for storing options while enforcing option types.",
             "homepage": "https://bitbucket.org/ennerd/charm-options",
             "support": {
-                "source": "https://bitbucket.org/ennerd/charm-options/src/95dec5386148050cfd3de49a889b3b1c0e38ede1/?at=1.0.6"
+                "source": "https://bitbucket.org/ennerd/charm-options/src/a11bdda40fca0d8f6c711d8eb2d5eb8a42e91f3d/?at=1.0.8"
             },
-            "time": "2022-04-07T09:59:49+00:00"
+            "time": "2022-04-18T21:01:37+00:00"
         },
         {
             "name": "moebius/coroutine",
@@ -131,18 +130,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/frodeborli/moebius-coroutine.git",
-                "reference": "762692e3c3759005969a6c6ddecfcdc7f3a02bf5"
+                "reference": "882d24d37ff450df5ce08256ab4fb935b6a9fa90"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/frodeborli/moebius-coroutine/zipball/762692e3c3759005969a6c6ddecfcdc7f3a02bf5",
-                "reference": "762692e3c3759005969a6c6ddecfcdc7f3a02bf5",
+                "url": "https://api.github.com/repos/frodeborli/moebius-coroutine/zipball/882d24d37ff450df5ce08256ab4fb935b6a9fa90",
+                "reference": "882d24d37ff450df5ce08256ab4fb935b6a9fa90",
                 "shasum": ""
             },
             "require": {
-                "charm/event": "dev-master",
-                "moebius/loop": "dev-master",
-                "moebius/promise": "dev-master"
+                "charm/event": "^1.0",
+                "moebius/promise": "^1.0"
             },
             "require-dev": {
                 "charm/testing": "dev-master"
@@ -154,64 +152,14 @@
             "type": "library",
             "autoload": {
                 "files": [
-                    "functions.php"
+                    "functions.php",
+                    "exceptions.php"
                 ],
                 "psr-4": {
                     "Moebius\\Coroutine\\": "src/"
                 },
                 "classmap": [
                     "Coroutine.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Frode Børli",
-                    "email": "frode@ennerd.com"
-                }
-            ],
-            "description": "Easy to use coroutines for PHP.",
-            "support": {
-                "issues": "https://github.com/frodeborli/moebius-coroutine/issues",
-                "source": "https://github.com/frodeborli/moebius-coroutine/tree/0.0.9-beta"
-            },
-            "time": "2022-04-08T07:41:24+00:00"
-        },
-        {
-            "name": "moebius/loop",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/frodeborli/moebius-loop.git",
-                "reference": "c91d4853477f35e55bd92b3cd3cf487292d37b26"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/frodeborli/moebius-loop/zipball/c91d4853477f35e55bd92b3cd3cf487292d37b26",
-                "reference": "c91d4853477f35e55bd92b3cd3cf487292d37b26",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=8.0"
-            },
-            "require-dev": {
-                "charm/testing": "dev-master"
-            },
-            "suggest": {
-                "ext-pcntl": "For signal handling support"
-            },
-            "default-branch": true,
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Moebius\\Loop\\": "src/"
-                },
-                "classmap": [
-                    "Loop.php",
-                    "LoopInterface.php"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -224,31 +172,30 @@
                     "email": "frode@ennerd.com"
                 }
             ],
-            "description": "An event-loop compatability layer for creating packages that work with other event loop implementations such as ReactPHP or Amphp.",
+            "description": "Easy to use coroutines for PHP.",
             "support": {
-                "issues": "https://github.com/frodeborli/moebius-loop/issues",
-                "source": "https://github.com/frodeborli/moebius-loop/tree/master"
+                "issues": "https://github.com/frodeborli/moebius-coroutine/issues",
+                "source": "https://github.com/frodeborli/moebius-coroutine/tree/1.0.3-beta"
             },
-            "time": "2022-04-07T10:58:47+00:00"
+            "time": "2022-04-18T20:54:29+00:00"
         },
         {
             "name": "moebius/promise",
-            "version": "dev-master",
+            "version": "1.0.0-beta",
             "source": {
                 "type": "git",
                 "url": "https://github.com/frodeborli/moebius-promise.git",
-                "reference": "d31998f202587479d423516cbb76049fcb0be694"
+                "reference": "2beb97a2dd5bbdf48c75ea8c4b9203558cb5924f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/frodeborli/moebius-promise/zipball/d31998f202587479d423516cbb76049fcb0be694",
-                "reference": "d31998f202587479d423516cbb76049fcb0be694",
+                "url": "https://api.github.com/repos/frodeborli/moebius-promise/zipball/2beb97a2dd5bbdf48c75ea8c4b9203558cb5924f",
+                "reference": "2beb97a2dd5bbdf48c75ea8c4b9203558cb5924f",
                 "shasum": ""
             },
             "require-dev": {
                 "charm/testing": "dev-master"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -271,9 +218,9 @@
             "description": "A promise implementation for PHP.",
             "support": {
                 "issues": "https://github.com/frodeborli/moebius-promise/issues",
-                "source": "https://github.com/frodeborli/moebius-promise/tree/0.0.3"
+                "source": "https://github.com/frodeborli/moebius-promise/tree/1.0.0-beta"
             },
-            "time": "2022-04-05T21:11:12+00:00"
+            "time": "2022-04-18T00:53:53+00:00"
         }
     ],
     "packages-dev": [
