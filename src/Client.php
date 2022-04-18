@@ -56,10 +56,13 @@ class Client extends AbstractConnection {
             );
             if (false === $socket) {
                 if ($errorCode === 0) {
-                    // PHP may be unable to create any more connections
+                    // PHP may be unable to create any more connections, so retry
                     Co::sleep(0.1);
                 } elseif ($errorCode === 110) {
                     throw new TimeoutError($errorMessage);
+                } else {
+                    // Generic error
+                    break;
                 }
             }
         } while (!$socket && --$retries > 0);
