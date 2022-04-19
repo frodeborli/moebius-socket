@@ -3,7 +3,7 @@
     "description": "A coroutine based socket client and server implementation.",
     "type": "library",
     "require": {
-        "moebius/coroutine": "dev-master",
+        "moebius/coroutine": ">=1.0",
         "charm/options": ">=1.0.6",
         "charm/event": ">=1.0.0"
     },
@@ -23,5 +23,6 @@
             "email": "frode@ennerd.com"
         }
     ],
-    "minimum-stability": "dev"
+    "minimum-stability": "RC",
+    "prefer-stable": true
 }

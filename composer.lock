@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "52e49c7795f2f7808bb12060b07e87dc",
+    "content-hash": "0a8e39518f323f2770f2b08292222ac8",
     "packages": [
         {
             "name": "charm/error",
@@ -85,7 +85,7 @@
         },
         {
             "name": "charm/options",
-            "version": "dev-master",
+            "version": "1.0.8",
             "source": {
                 "type": "git",
                 "url": "https://bitbucket.org/ennerd/charm-options.git",
@@ -97,7 +97,6 @@
                 "reference": "a11bdda40fca0d8f6c711d8eb2d5eb8a42e91f3d",
                 "shasum": ""
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "files": [
@@ -126,16 +125,16 @@
         },
         {
             "name": "moebius/coroutine",
-            "version": "dev-master",
+            "version": "1.0.5-RC1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/frodeborli/moebius-coroutine.git",
-                "reference": "a3c6067b1314e6ac0c4b563c6f1fa1d0cebede9c"
+                "reference": "14711fb731f403f96045d2f291a442381d8d2ff4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/frodeborli/moebius-coroutine/zipball/a3c6067b1314e6ac0c4b563c6f1fa1d0cebede9c",
-                "reference": "a3c6067b1314e6ac0c4b563c6f1fa1d0cebede9c",
+                "url": "https://api.github.com/repos/frodeborli/moebius-coroutine/zipball/14711fb731f403f96045d2f291a442381d8d2ff4",
+                "reference": "14711fb731f403f96045d2f291a442381d8d2ff4",
                 "shasum": ""
             },
             "require": {
@@ -143,12 +142,11 @@
                 "moebius/promise": "^1.0"
             },
             "require-dev": {
-                "charm/testing": "dev-master"
+                "charm/testing": ">=0"
             },
             "suggest": {
                 "moebius/async-file": "Automatically and transparently makes blocking file system operations non-blocking"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "files": [
@@ -175,26 +173,26 @@
             "description": "Easy to use coroutines for PHP.",
             "support": {
                 "issues": "https://github.com/frodeborli/moebius-coroutine/issues",
-                "source": "https://github.com/frodeborli/moebius-coroutine/tree/1.0.5-beta"
+                "source": "https://github.com/frodeborli/moebius-coroutine/tree/1.0.5-RC1"
             },
-            "time": "2022-04-19T19:23:28+00:00"
+            "time": "2022-04-19T21:33:56+00:00"
         },
         {
             "name": "moebius/promise",
-            "version": "1.0.0-beta",
+            "version": "1.0.0-RC1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/frodeborli/moebius-promise.git",
-                "reference": "2beb97a2dd5bbdf48c75ea8c4b9203558cb5924f"
+                "reference": "4b0dc3c93d2c46b9b2cc9ecc635589207f209e6a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/frodeborli/moebius-promise/zipball/2beb97a2dd5bbdf48c75ea8c4b9203558cb5924f",
-                "reference": "2beb97a2dd5bbdf48c75ea8c4b9203558cb5924f",
+                "url": "https://api.github.com/repos/frodeborli/moebius-promise/zipball/4b0dc3c93d2c46b9b2cc9ecc635589207f209e6a",
+                "reference": "4b0dc3c93d2c46b9b2cc9ecc635589207f209e6a",
                 "shasum": ""
             },
             "require-dev": {
-                "charm/testing": "dev-master"
+                "charm/testing": ">=0"
             },
             "type": "library",
             "autoload": {
@@ -218,31 +216,30 @@
             "description": "A promise implementation for PHP.",
             "support": {
                 "issues": "https://github.com/frodeborli/moebius-promise/issues",
-                "source": "https://github.com/frodeborli/moebius-promise/tree/1.0.0-beta"
+                "source": "https://github.com/frodeborli/moebius-promise/tree/1.0.0-RC1"
             },
-            "time": "2022-04-18T00:53:53+00:00"
+            "time": "2022-04-19T21:32:02+00:00"
         }
     ],
     "packages-dev": [
         {
             "name": "charm/terminal",
-            "version": "dev-master",
+            "version": "1.0.7",
             "source": {
                 "type": "git",
                 "url": "https://bitbucket.org/ennerd/terminal.git",
-                "reference": "af5cc7df87365e954987e1b0b4f9c3478f64897f"
+                "reference": "5441b2d5a537570acd264a18c31a47ef50e94418"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://bitbucket.org/ennerd/terminal/get/af5cc7df87365e954987e1b0b4f9c3478f64897f.zip",
-                "reference": "af5cc7df87365e954987e1b0b4f9c3478f64897f",
+                "url": "https://bitbucket.org/ennerd/terminal/get/5441b2d5a537570acd264a18c31a47ef50e94418.zip",
+                "reference": "5441b2d5a537570acd264a18c31a47ef50e94418",
                 "shasum": ""
             },
             "require": {
                 "charm/options": ">=1.0.6",
                 "charm/util-phpencode": ">=1.0.2"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "files": [
@@ -268,13 +265,13 @@
             "description": "Organized and colorful command line output through a simple markup language.",
             "homepage": "https://bitbucket.org/ennerd/terminal",
             "support": {
-                "source": "https://bitbucket.org/ennerd/terminal/src/af5cc7df87365e954987e1b0b4f9c3478f64897f/?at=master"
+                "source": "https://bitbucket.org/ennerd/terminal/src/5441b2d5a537570acd264a18c31a47ef50e94418/?at=1.0.7"
             },
-            "time": "2022-04-08T20:40:39+00:00"
+            "time": "2022-04-08T20:40:08+00:00"
         },
         {
             "name": "charm/testing",
-            "version": "dev-master",
+            "version": "0.0.9",
             "source": {
                 "type": "git",
                 "url": "https://bitbucket.org/ennerd/charm-testing.git",
@@ -290,7 +287,6 @@
                 "charm/terminal": ">=1.0.6",
                 "charm/util-phpencode": "^1.0"
             },
-            "default-branch": true,
             "bin": [
                 "bin/charm-testing"
             ],
@@ -356,11 +352,9 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "dev",
-    "stability-flags": {
-        "moebius/coroutine": 20
-    },
-    "prefer-stable": false,
+    "minimum-stability": "RC",
+    "stability-flags": [],
+    "prefer-stable": true,
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
