@@ -130,12 +130,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/frodeborli/moebius-coroutine.git",
-                "reference": "882d24d37ff450df5ce08256ab4fb935b6a9fa90"
+                "reference": "a3c6067b1314e6ac0c4b563c6f1fa1d0cebede9c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/frodeborli/moebius-coroutine/zipball/882d24d37ff450df5ce08256ab4fb935b6a9fa90",
-                "reference": "882d24d37ff450df5ce08256ab4fb935b6a9fa90",
+                "url": "https://api.github.com/repos/frodeborli/moebius-coroutine/zipball/a3c6067b1314e6ac0c4b563c6f1fa1d0cebede9c",
+                "reference": "a3c6067b1314e6ac0c4b563c6f1fa1d0cebede9c",
                 "shasum": ""
             },
             "require": {
@@ -175,9 +175,9 @@
             "description": "Easy to use coroutines for PHP.",
             "support": {
                 "issues": "https://github.com/frodeborli/moebius-coroutine/issues",
-                "source": "https://github.com/frodeborli/moebius-coroutine/tree/1.0.3-beta"
+                "source": "https://github.com/frodeborli/moebius-coroutine/tree/1.0.5-beta"
             },
-            "time": "2022-04-18T20:54:29+00:00"
+            "time": "2022-04-19T19:23:28+00:00"
         },
         {
             "name": "moebius/promise",

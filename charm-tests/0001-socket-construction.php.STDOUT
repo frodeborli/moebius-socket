@@ -1,0 +1,19 @@
+> Client constructed
+> Request sent
+response: HTTP/1.1 501 Not Implemented
+response: Server: nginx/1.18.0 (Ubuntu)
+response: Date: Tue, 19 Apr 2022 19:44:25 GMT
+response: Content-Type: text/html
+response: Content-Length: 174
+response: Connection: close
+response: 
+response: <html>
+response: <head><title>501 Not Implemented</title></head>
+response: <body>
+response: <center><h1>501 Not Implemented</h1></center>
+response: <hr><center>nginx/1.18.0 (Ubuntu)</center>
+response: </body>
+response: </html>
+> EOF reached
+> Disconnected
+Coroutines did run

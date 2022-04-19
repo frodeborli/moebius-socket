@@ -9,7 +9,7 @@ use function M\{go, await, sleep};
 
 $server = new Server('tcp://127.0.0.1:8080');
 
-$requestCount = 1000;
+$requestCount = 50;
 
 go(function() use ($server) {
     sleep(2);
@@ -30,7 +30,7 @@ go(function() use ($requestCount) {
                 $client->write("GET / HTTP/1.0\r\n\r\n");
                 echo " - $i: Sent request\n";
                 $response = $client->read(8192);
-                echo " - $i: response size=".strlen($response)."\n";
+                echo " - $i: response\n";
                 $client->close();
             } catch (\Throwable $e) {
                 echo "FAILED REQUEST: ".$e->getMessage()."\n";

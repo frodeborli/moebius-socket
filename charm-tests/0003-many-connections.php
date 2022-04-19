@@ -33,7 +33,8 @@ foreach ($results as $number => $future) {
     try {
         $bytesReceived += strlen(await($future));
     } catch (\Throwable $e) {
-        echo "Request $number failed\n";
+        echo "Request $number failed: ".$e->getMessage()." ".$e->getCode()." ".$e->getFile().":".$e->getLine()."\n";
+        
     }
 }
 
